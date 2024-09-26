@@ -14,6 +14,12 @@ acc = 0
 for i in range(0, 32):
     acc |= ((input_32_bits >> (32 - P[i])) & 1) << (32 - (i + 1))
 
+"""
 # remember the leading zeros are removed
 print(bin(input_32_bits))
 print(bin(acc))
+"""
+
+# formated to include the leading zeros
+print(format(input_32_bits, "#034b"))
+print(format(acc, "#034b"))
