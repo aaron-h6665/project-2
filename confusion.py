@@ -95,7 +95,6 @@ def confusion(input_48_bits, s_box):
         chunk_middle = (chunk >> 1) & 0xf
 
         four_bits = s_box[i][chunk_ends][chunk_middle] & 0xf
-        print(bin(four_bits))
 
         acc |= four_bits << (4 * (7 - i))
 
