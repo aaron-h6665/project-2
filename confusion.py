@@ -80,7 +80,7 @@ and then concatenate the 4-bit results to get a final 32-bit output.
 
 input_48_bits = 0xfffffffffffe #48 one's
 
-def confusion(input_48_bits):
+def confusion(input_48_bits, s_box):
     acc = 0
 
     for i in range(8):
