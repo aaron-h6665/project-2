@@ -7,7 +7,7 @@ This repository contains the code that I have submitted for Phase Two of my Comp
 * Created a file that emulates the Feistel Round in DES.
 
     * Feistel Round in Image Form
-![screenshot](feisteldiagram.png)
+![screenshot](DES/feisteldiagram.png)
 
 * Explored S-box (confusion) and P-box (diffusion) in those respective files
 * Added file that contains the key scheduling used in the Feistel Round 
