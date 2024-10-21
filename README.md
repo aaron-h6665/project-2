@@ -6,10 +6,20 @@ This repository contains the code that I have submitted for Phase Two of my Comp
 
 * Created a file that emulates the Feistel Round in DES.
 
-## Feistel Round in Image Form
+    * Feistel Round in Image Form
 ![screenshot](feisteldiagram.png)
 
 * Explored S-box (confusion) and P-box (diffusion) in those respective files
 * Added file that contains the key scheduling used in the Feistel Round 
 * Diffie-Hellmann Brute Force solved code shows that by 26-27 bit prime a normal computer struggles to brute force symmetric key encryption
 
+## How to tweak this project for your own uses
+
+Feel free to take this code and test/improve the homemade DES, Diffie-Hellmann Key Exchange, and RSA for yourself.
+
+## Find a bug?
+
+If you found an issue or would like to submit an improvement ot this project, please notify me by email: ahuang25@andover.edu.
+
+## Work in Progress
+None
