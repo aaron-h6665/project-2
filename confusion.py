@@ -65,37 +65,40 @@ s_box = [
     ]
 
 """
-Suppose the third 6-bit chunk is 101011. This means that, from among the 48 bits in the input, 
-the bits numbered 12 through 17 (if the first bit is in position 0) are 101011. 
-Then, we'll be using the third s-box (out of 8), the first and last bits (11) determine the row, 
-and the middle bits (0101) determine the column. 
-The value at this row and column in the third S-box will be a 4-bit number, 
-which is the substituted value. In this particular example, 
-that's 9 (as a 4-bit number, meaning it's 0x9 or 0b1001), so in the 32-bit output, 
-the third 4-bit chunk (bits 8 through 11) would be 1001.
-
-You will perform this substitution for each of the eight 6-bit chunks 
-and then concatenate the 4-bit results to get a final 32-bit output.
+Author: Aaron
+Last Modified: 10/14/2024
+Description:
+    S-Box Subsitution 
+    Split a 48 bit input into eight 6-bit chunks. For each chunk, use the corresponding
+    S-Box (first chunk, first box). The first and last bits of the chunk determine the row
+    and the middle bits determine the column in the S-Box. The value at this row and column
+    will be a 4-bit number, and will become the substituted value. Concatenate the eight 4-bit 
+    results to get a final 32-bit output.
 """
 
-input_48_bits = 0xfffffffffffe #48 one's
+input_48_bits = 0xffffffffffff #48 one's
 
 def confusion(input_48_bits, s_box):
     acc = 0
 
+    # loop for the eight chunks
     for i in range(8):
+        # obtain the correct chunk of bits
         chunk = (input_48_bits >> (6 * (7 - i))) & 0x3f
-        # Extract first and last bits
+
+        # extract the first and last bits
         first_bit = (chunk >> 5)
         last_bit = chunk & 0x1
-
-        # Combine the first and last bits
+        # combine the first and last bits
         chunk_ends = (first_bit << 1) | last_bit
-    
-        chunk_middle = (chunk >> 1) & 0xf
 
+        # get the middle bits of the chunk
+        chunk_middle = (chunk >> 1) & 0xf
+        
+        # find the corresponding value in the S-Box
         four_bits = s_box[i][chunk_ends][chunk_middle] & 0xf
 
+        # concatenate with the accmulation (all the previous data)
         acc |= four_bits << (4 * (7 - i))
 
         return acc
